@@ -14,7 +14,7 @@
     <div class="card bg-base-100 shadow-md rounded-2xl border border-slate-200">
         <div class="card-body p-7">
 
-            <form action="{{ route('admin.polis.store') }}" method="POST">
+            <form action="{{ route('admin.polis.store') }}" method="POST" onsubmit="const button = this.querySelector('[type=submit]'); if (this.dataset.submitting) return false; this.dataset.submitting = 'true'; button.disabled = true; button.textContent = 'Menyimpan...';">
                 @csrf
 
                 {{-- NAMA POLI --}}
@@ -31,6 +31,9 @@
                         class="input input-bordered w-full rounded-lg text-sm"
                         placeholder="Masukkan nama poli..."
                         required>
+                    @error('nama_poli')
+                        <span class="mt-1 text-sm text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 {{-- KETERANGAN --}}

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\Profile\PasswordController;
 
 use App\Http\Controllers\Admin\PoliController;
 use App\Http\Controllers\Admin\DokterController as AdminDokterController;
@@ -43,6 +44,13 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile/password', [PasswordController::class, 'edit'])
+        ->name('profile.password.edit');
+    Route::put('/profile/password', [PasswordController::class, 'update'])
+        ->name('profile.password.update');
+});
 
 Route::middleware('auth')->post('/notifications/{id}/read', function ($id) {
     $notification = auth()->user()->notifications()->where('id', $id)->first();

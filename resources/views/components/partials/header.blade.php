@@ -1,6 +1,6 @@
 <header class="bg-base-100 border-b border-base-300 h-16 flex items-center px-6 gap-4 sticky top-0 z-30 shadow-sm">
 
-    <button onclick="toggleSidebar()" class="btn btn-square btn-ghost lg:hidden">
+    <button onclick="toggleSidebar()" class="btn btn-square btn-ghost md:hidden">
         <i data-lucide="menu" class="w-5 h-5"></i>
     </button>
 
@@ -81,6 +81,13 @@
     <button onclick="toggleFullscreen()" class="btn btn-square btn-ghost">
         <i id="fsIcon" class="fas fa-expand w-5 h-5"></i>
     </button>
+
+    <a href="{{ route('profile.password.edit') }}"
+        class="btn btn-square btn-ghost"
+        title="Ganti password"
+        aria-label="Ganti password">
+        <i class="fas fa-key" aria-hidden="true"></i>
+    </a>
 
     <div class="flex items-center gap-3">
         <div class="text-right hidden sm:block">

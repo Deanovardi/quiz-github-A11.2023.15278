@@ -14,7 +14,7 @@
     <div class="card bg-base-100 shadow-md rounded-2xl border border-slate-200">
         <div class="card-body p-7">
 
-            <form action="{{ route('admin.polis.update', $poli->id) }}" method="POST">
+            <form action="{{ route('admin.polis.update', $poli->id) }}" method="POST" onsubmit="const button = this.querySelector('[type=submit]'); if (this.dataset.submitting) return false; this.dataset.submitting = 'true'; button.disabled = true; button.textContent = 'Menyimpan...';">
                 @csrf
                 @method('PUT')
 
